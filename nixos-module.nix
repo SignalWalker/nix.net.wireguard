@@ -223,8 +223,8 @@ in {
           net = wg.networks.${netName};
         in
           # TODO :: warn if openFirewall && net.port == "auto"
-          if net.enable && net.port != "auto" && net.openFirewall
-          then acc ++ [tunnel.port]
+          if net.enable && net.netdev.port != "auto" && net.netdev.openFirewall
+          then acc ++ [net.netdev.port]
           else acc
       )
       [] (attrNames wg.networks);
